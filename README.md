@@ -11,7 +11,7 @@ local Window = NEVERLOSE:AddWindow('NEVERLOSE','Example')
 
 Window:AddTabLabel('Example')
 
-local TabExample = Window:AddTab("Example Tab","ads")
+local TabExample = Window:AddTab("Example Tab","ads") -- ads list folder earth mouse user
 local Tab = Window:AddTab("Tab","ads")
 
 local section = TabExample:AddSection('Section',"right")
