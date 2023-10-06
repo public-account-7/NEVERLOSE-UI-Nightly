@@ -1,8 +1,5 @@
 # NEVERLOSE UI
 ## Nightly
-
-![Screenshot 2023-10-05 160728](https://github.com/3345-c-a-t-s-u-s/NEVERLOSE-UI-Nightly/assets/117000269/87274dd2-d4a9-4624-9547-6e2225d253ea)
-
 ### Example Code
 ```lua
 local NEVERLOSE = loadstring(game:HttpGet('https://raw.githubusercontent.com/3345-c-a-t-s-u-s/NEVERLOSE-UI-Nightly/main/source.lua'))()
