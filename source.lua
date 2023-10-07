@@ -549,12 +549,13 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 		Image.Size = UDim2.new(0.850000024, 0, 0.800000012, 0)
 		Image.SizeConstraint = Enum.SizeConstraint.RelativeYY
 		Image.ZIndex = 5
-		GetImageData(tostring(IconType),Image)
 
 		Image.ImageColor3 = Color3.fromRGB(255, 140, 0)
 		Image.ImageRectOffset = Vector2.new(205, 565)
 		Image.ImageRectSize = Vector2.new(35, 35)
-
+		
+		GetImageData(tostring(IconType),Image)
+		
 		UICorner_2.CornerRadius = UDim.new(0, 3)
 		UICorner_2.Parent = Image
 
