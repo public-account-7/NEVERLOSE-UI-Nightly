@@ -154,11 +154,11 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 			TextLabel.TextStrokeTransparency = 0.900
 			TextLabel.TextWrapped = true
 			TextLabel.TextXAlignment = Enum.TextXAlignment.Left
-			
+
 			headd2text=TextLabel
 		end
 	end)
-	
+
 	local toggle_valu = true
 
 	local function ui_toggleong(val)
@@ -166,11 +166,11 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 		if val then
 			TweenService:Create(Frame,TweenInfo.new(uptime,Enum.EasingStyle.Quint),{Size=ooldsize,Position=UDim2.new(0.5,0,0.5,0)}):Play()
 			TweenService:Create(HeadName,TweenInfo.new(uptime/3,Enum.EasingStyle.Quint),{Size=UDim2.new(0.205458686, 0, 0.133462012, 0),Position=UDim2.new(0.0100000342, 0, 0.010000146, 0)}):Play()
-			
-			
+
+
 			TweenService:Create(TabHose,TweenInfo.new(0.3),{Position=UDim2.new(.223,0,0.143,0)}):Play()
 			TweenService:Create(TabButtons,TweenInfo.new(0.3),{Position=UDim2.new(.008,0,0.143,0)}):Play()
-			
+
 			if headd2text then
 				TweenService:Create(headd2text,TweenInfo.new(0.3),{TextTransparency=0,TextStrokeTransparency=0.900}):Play()
 			end
@@ -183,18 +183,18 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 			TweenService:Create(Frame_2,TweenInfo.new(0.3),{BackgroundTransparency=0}):Play()
 			TweenService:Create(Frame_3,TweenInfo.new(0.3),{BackgroundTransparency=0.9}):Play()
 			TweenService:Create(DropShadow,TweenInfo.new(0.3),{ImageTransparency=0.86}):Play()
-			
+
 		else
 			TweenService:Create(Frame,TweenInfo.new(uptime,Enum.EasingStyle.Quint),{Size=UDim2.new(0.14, 0,0.14, 0),Position=oldPositionClose}):Play()
 			TweenService:Create(HeadName,TweenInfo.new(uptime/1.2,Enum.EasingStyle.Quint),{Size=UDim2.new(0.9, 0,0.5, 0),Position=UDim2.new(0.046,0,0.24,0)}):Play()
 
 			TweenService:Create(TabHose,TweenInfo.new(0.3),{Position=UDim2.new(1.5,0,0.143,0)}):Play()
 			TweenService:Create(TabButtons,TweenInfo.new(0.3),{Position=UDim2.new(-1.25,0,0.143,0)}):Play()
-			
+
 			if headd2text then
 				TweenService:Create(headd2text,TweenInfo.new(0.3),{TextTransparency=1,TextStrokeTransparency=1}):Play()
 			end
-			
+
 			TweenService:Create(UserName,TweenInfo.new(0.3),{TextTransparency=1,TextStrokeTransparency=1}):Play()
 			TweenService:Create(UserImage,TweenInfo.new(0.3),{ImageTransparency=1}):Play()
 			TweenService:Create(outlo,TweenInfo.new(0.3),{BackgroundTransparency=1}):Play()
@@ -205,7 +205,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 			TweenService:Create(DropShadow,TweenInfo.new(0.3),{ImageTransparency=1}):Play()
 		end
 	end
-	
+
 	task.spawn(function()
 		local ImageButton = Instance.new("ImageButton")
 
@@ -223,7 +223,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 
 		ImageButton.MouseButton1Click:Connect(function()
 			toggle_valu=not toggle_valu
-			
+
 			if toggle_valu then
 				oldPositionClose = Frame.Position
 				TweenService:Create(ImageButton,TweenInfo.new(0.5),{
@@ -238,11 +238,11 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 					AnchorPoint=Vector2.new(1,0)
 				}):Play()
 			end
-			
+
 			ui_toggleong(toggle_valu)
 		end)
 	end)
-	
+
 	task.spawn(function()
 		local dragToggle = nil
 		local dragSpeed = 0.15
@@ -277,7 +277,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 			end
 		end)
 	end)
-	
+
 	ScreenGui.Parent = CoreGui
 	ScreenGui.ResetOnSpawn = false
 	ScreenGui.IgnoreGuiInset = true
@@ -549,7 +549,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 		Image.Size = UDim2.new(0.850000024, 0, 0.800000012, 0)
 		Image.SizeConstraint = Enum.SizeConstraint.RelativeYY
 		Image.ZIndex = 5
-		GetImageData(IconType,Image)
+		GetImageData(tostring(IconType),Image)
 
 		Image.ImageColor3 = Color3.fromRGB(255, 140, 0)
 		Image.ImageRectOffset = Vector2.new(205, 565)
@@ -1699,7 +1699,7 @@ end
 
 function NEVERLOSE:KeySystem(TitleName,LinkKey,callback)
 	local Functions = {}
-	
+
 	local ScreenGui = Instance.new("ScreenGui")
 	local Frame = Instance.new("Frame")
 	local UICorner = Instance.new("UICorner")
@@ -1720,7 +1720,7 @@ function NEVERLOSE:KeySystem(TitleName,LinkKey,callback)
 	ScreenGui.ResetOnSpawn = false
 	ScreenGui.IgnoreGuiInset=true
 	ScreenGui.ZIndexBehavior=Enum.ZIndexBehavior.Global
-	
+
 	Frame.Parent = ScreenGui
 	Frame.AnchorPoint = Vector2.new(0.5, 0.5)
 	Frame.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
@@ -1836,9 +1836,9 @@ function NEVERLOSE:KeySystem(TitleName,LinkKey,callback)
 
 	UICorner_5.CornerRadius = UDim.new(0, 3)
 	UICorner_5.Parent = Submit
-	
+
 	TweenService:Create(Frame,TweenInfo.new(0.4,Enum.EasingStyle.Quint),{Size=UDim2.new(0.25, 0, 0.25, 0)}):Play()
-	
+
 	CopyKey.MouseButton1Click:Connect(function()
 		pcall(function()
 			setclipboard(tostring(LinkKey))
@@ -1848,11 +1848,11 @@ function NEVERLOSE:KeySystem(TitleName,LinkKey,callback)
 			toclipboard(tostring(LinkKey))
 		end)
 	end)
-	
+
 	local asd=false
-	
+
 	local function_call
-	
+
 	Submit.MouseButton1Click:Connect(function()
 		if asd then
 			return
@@ -1862,26 +1862,26 @@ function NEVERLOSE:KeySystem(TitleName,LinkKey,callback)
 		if callback(PasteKey.Text) then
 			TweenService:Create(Frame,TweenInfo.new(0.4,Enum.EasingStyle.Quint,Enum.EasingDirection.InOut),{Size=UDim2.new(0,0,0,0)}):Play()
 			function_call=function_call or function()
-				
+
 			end
-			
+
 			task.spawn(function()
 				task.wait(.45)
 				ScreenGui:Destroy()
 			end)
-			
+
 			function_call()
-			
+
 			return
-				
+
 		else
 			PasteKey.Text=''
-			
+
 		end
 
 		asd=false
 	end)
-	
+
 	task.spawn(function()
 		local dragToggle = nil
 		local dragSpeed = 0.2
@@ -1916,11 +1916,11 @@ function NEVERLOSE:KeySystem(TitleName,LinkKey,callback)
 			end
 		end)
 	end)
-	
+
 	function Functions:Callback(func)
 		function_call=func
 	end
-	
+
 	return Functions
 end
 
