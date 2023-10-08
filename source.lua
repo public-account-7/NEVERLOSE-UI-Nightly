@@ -1537,7 +1537,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 				end
 				
 				local function get_list_v4()
-					local a=0
+					local a=11
 
 					for i,v:TextButton in ipairs(DownBar:GetChildren()) do
 						if v:isA('TextButton') then
@@ -1563,6 +1563,8 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 						TweenService:Create(LabelText,TweenInfo.new(0.4),{TextTransparency=0}):Play()
 
 						TweenService:Create(DownBar,TweenInfo.new(0.1),{Size=UDim2.new(0.4,0,0,get_list_size())}):Play()
+						
+						auto_updatea()
 					else
 						TweenService:Create(Icon,TweenInfo.new(0.15),{Rotation=-90}):Play()
 						TweenService:Create(LabelText,TweenInfo.new(0.4),{TextTransparency=0.3}):Play()
