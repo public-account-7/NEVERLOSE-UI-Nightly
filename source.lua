@@ -553,9 +553,9 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 		Image.ImageColor3 = Color3.fromRGB(255, 140, 0)
 		Image.ImageRectOffset = Vector2.new(205, 565)
 		Image.ImageRectSize = Vector2.new(35, 35)
-		
+
 		GetImageData(tostring(IconType),Image)
-		
+
 		UICorner_2.CornerRadius = UDim.new(0, 3)
 		UICorner_2.Parent = Image
 
@@ -1535,8 +1535,27 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 
 					return a + 15
 				end
+				
+				local function get_list_v4()
+					local a=0
 
+					for i,v:TextButton in ipairs(DownBar:GetChildren()) do
+						if v:isA('TextButton') then
+							a=a + v.AbsoluteSize.Y
+						end
+					end
 
+					return a + 15
+				end
+				
+				local function auto_updatea()
+					if DropdownToggle then
+						TweenService:Create(DownBar,TweenInfo.new(0.1),{Size=UDim2.new(0.4,0,0,get_list_v4())}):Play()
+					else
+						TweenService:Create(DownBar,TweenInfo.new(0.1),{Size=UDim2.new(0.4,0,0,0)}):Play()
+					end
+				end
+				
 				local function DropdownToggleEffect(val)
 					if val then
 						Dropdown.Visible=true
@@ -1612,7 +1631,8 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 
 					end
 				end
-
+				
+				table.insert(NEVERLOSE.auto_function,auto_updatea)
 				refresh()
 
 				local func={}
