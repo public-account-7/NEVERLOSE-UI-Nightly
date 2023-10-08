@@ -606,7 +606,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 		Left.BorderSizePixel = 0
 		Left.ClipsDescendants = false
 		Left.Position = UDim2.new(0, 0, 0.5, 0)
-		Left.Size = UDim2.new(0.49000001, 0, 0.980000019, 0)
+		Left.Size = UDim2.new(0.499000001, 0, 0.980000019, 0)
 		Left.ZIndex = 5
 		Left.ScrollBarThickness = 0
 		Left.VerticalScrollBarPosition = Enum.VerticalScrollBarPosition.Left
@@ -626,7 +626,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 		Right.BorderSizePixel = 0
 		Right.ClipsDescendants = false
 		Right.Position = UDim2.new(1, 0, 0.5, 0)
-		Right.Size = UDim2.new(0.49000001, 0, 0.980000019, 0)
+		Right.Size = UDim2.new(0.499000001, 0, 0.980000019, 0)
 		Right.ZIndex = 5
 		Right.ScrollBarThickness = 0
 
@@ -638,20 +638,19 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 		scrolling_connect(Right)
 		scrolling_connect(Left)
 
-		Tab:GetPropertyChangedSignal('Position'):Connect(function()
-			if Tab.Position.X.Scale>=1.25 then
-				Tab.Visible=false
-			else
-				Tab.Visible=true
-			end
-		end)
-
 		local function tabcall(val,bas)
 			if val then
+				
+				if not Tab.Visible then
+					Tab.Position=UDim2.new(0.5,0,.65,0)
+				end
+				
 				Tab.Visible=true
+				TweenService:Create(Tab,TweenInfo.new(.5),{Position = UDim2.new(0.5, 0, 0.5, 0)}):Play()
 				TweenService:Create(TabButton,TweenInfo.new(0.3),{BackgroundTransparency=0.6}):Play()
 			else
 				Tab.Visible=false
+				TweenService:Create(Tab,TweenInfo.new(.5),{Position = UDim2.new(0.5, 0, 1.5, 0)}):Play()
 				TweenService:Create(TabButton,TweenInfo.new(0.3),{BackgroundTransparency=1}):Play()
 			end
 		end
@@ -668,6 +667,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 			for i,v in ipairs(Tabs) do
 				if v[1]==Tab then
 					v[2](true,0.4)
+					task.wait()
 				else
 					v[2](false,0.4)
 				end
@@ -1535,9 +1535,9 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 
 					return a + 15
 				end
-				
+
 				local function get_list_v4()
-					local a=11
+					local a=0
 
 					for i,v:TextButton in ipairs(DownBar:GetChildren()) do
 						if v:isA('TextButton') then
@@ -1547,7 +1547,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 
 					return a + 15
 				end
-				
+
 				local function auto_updatea()
 					if DropdownToggle then
 						TweenService:Create(DownBar,TweenInfo.new(0.1),{Size=UDim2.new(0.4,0,0,get_list_v4())}):Play()
@@ -1555,7 +1555,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 						TweenService:Create(DownBar,TweenInfo.new(0.1),{Size=UDim2.new(0.4,0,0,0)}):Play()
 					end
 				end
-				
+
 				local function DropdownToggleEffect(val)
 					if val then
 						Dropdown.Visible=true
@@ -1563,8 +1563,19 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 						TweenService:Create(LabelText,TweenInfo.new(0.4),{TextTransparency=0}):Play()
 
 						TweenService:Create(DownBar,TweenInfo.new(0.1),{Size=UDim2.new(0.4,0,0,get_list_size())}):Play()
-						
+
 						auto_updatea()
+						
+						for i,v:TextButton in ipairs(DownBar:GetChildren()) do
+							if v:isA('TextButton') then
+								v.Size=UDim2.new(0,0,0,0)
+								v.TextTransparency=1
+								TweenService:Create(v,TweenInfo.new(0.1+(i/100)),{
+									Size  = UDim2.new(0.99000001, 0, 0.5, 0),
+									TextTransparency=0.3
+								}):Play()
+							end
+						end
 					else
 						TweenService:Create(Icon,TweenInfo.new(0.15),{Rotation=-90}):Play()
 						TweenService:Create(LabelText,TweenInfo.new(0.4),{TextTransparency=0.3}):Play()
@@ -1633,7 +1644,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 
 					end
 				end
-				
+
 				table.insert(NEVERLOSE.auto_function,auto_updatea)
 				refresh()
 
@@ -1893,7 +1904,7 @@ function NEVERLOSE:KeySystem(TitleName,LinkKey,callback)
 				ScreenGui:Destroy()
 			end)
 
-			function_call()
+			function_call(PasteKey.Text)
 
 			return
 
