@@ -1650,7 +1650,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 					Dropdown.TextSize = 14.000
 					Dropdown.TextWrapped = true
 					TweenService:Create(Dropdown,TweenInfo.new(0.1),{TextTransparency=0.3}):Play()
-					Dropdown.ZIndex = 999999
+					Dropdown.ZIndex = 100000000000000
 					UIAspectRatioConstraint.Parent = Dropdown
 					UIAspectRatioConstraint.AspectRatio = 4.5
 					UIAspectRatioConstraint.AspectType = Enum.AspectType.ScaleWithParentSize
