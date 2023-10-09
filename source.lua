@@ -87,7 +87,19 @@ local function GetImageData(name:string,image:ImageLabel)
 		image.ImageRectOffset = Vector2.new(604,324)
 		image.ImageRectSize = Vector2.new(35,35)
 	end
-
+	
+	if name == "locked" then
+		image.Image = NigImage
+		image.ImageRectOffset = Vector2.new(524, 644)
+		image.ImageRectSize = Vector2.new(35,35)
+	end
+	
+	if name == "home" then
+		image.Image = NigImage
+		image.ImageRectOffset = Vector2.new(964, 205)
+		image.ImageRectSize = Vector2.new(35,35)
+	end
+	
 	if name == "mouse" then
 		image.Image = "rbxassetid://3515393063"
 	end
@@ -154,7 +166,8 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 			TextLabel.TextStrokeTransparency = 0.900
 			TextLabel.TextWrapped = true
 			TextLabel.TextXAlignment = Enum.TextXAlignment.Left
-
+			TextLabel.RichText=true
+			
 			headd2text=TextLabel
 		end
 	end)
@@ -637,16 +650,33 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 
 		scrolling_connect(Right)
 		scrolling_connect(Left)
-
+		
+		local function bedisea()
+			if headd2text then
+				TweenService:Create(headd2text,TweenInfo.new(.1),{
+					TextTransparency = 0.1,
+					TextStrokeTransparency=.95
+				}):Play()
+				task.wait(.11)
+				TweenService:Create(headd2text,TweenInfo.new(.1),{
+					TextTransparency = 0,
+					TextStrokeTransparency=.9
+				}):Play()
+			end
+		end
+		
 		local function tabcall(val,bas)
 			if val then
-				
+
 				if not Tab.Visible then
-					Tab.Position=UDim2.new(0.5,0,.65,0)
+					task.spawn(bedisea)
+					Tab.Position=UDim2.new(0.5,0,0,0)
+					Tab.Size=UDim2.new(0.8, 0, 0, 0)
 				end
-				
+
 				Tab.Visible=true
-				TweenService:Create(Tab,TweenInfo.new(.5),{Position = UDim2.new(0.5, 0, 0.5, 0)}):Play()
+				TweenService:Create(Tab,TweenInfo.new(.3,Enum.EasingStyle.Quint,Enum.EasingDirection.Out),{Position = UDim2.new(0.5, 0, 0.5, 0)}):Play()
+				TweenService:Create(Tab,TweenInfo.new(.75,Enum.EasingStyle.Quint,Enum.EasingDirection.Out),{Size = UDim2.new(0.99000001, 0, 0.99000001, 0)}):Play()
 				TweenService:Create(TabButton,TweenInfo.new(0.3),{BackgroundTransparency=0.6}):Play()
 			else
 				Tab.Visible=false
@@ -1329,7 +1359,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 				local function update(Input)
 					local SizeScale = math.clamp((((Input.Position.X) - MoveFrame.AbsolutePosition.X) / MoveFrame.AbsoluteSize.X), 0, 1)
 					local Valuea = math.floor(((Max - Min) * SizeScale) + Min)
-					local Size = UDim2.fromScale(math.clamp(SizeScale+0.1,0,1), 1)
+					local Size = UDim2.fromScale(math.clamp(SizeScale+0.12,0,1), 1)
 					ValueText.Text = tostring(Valuea)
 					TweenService:Create(Inline,TweenInfo.new(0.1),{Size = Size}):Play()
 					callback(Valuea)
@@ -1565,18 +1595,28 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 						TweenService:Create(DownBar,TweenInfo.new(0.1),{Size=UDim2.new(0.4,0,0,get_list_size())}):Play()
 
 						auto_updatea()
-						
+
 						for i,v:TextButton in ipairs(DownBar:GetChildren()) do
 							if v:isA('TextButton') then
 								v.Size=UDim2.new(0,0,0,0)
 								v.TextTransparency=1
-								TweenService:Create(v,TweenInfo.new(0.1+(i/100)),{
+								TweenService:Create(v,TweenInfo.new(0.01+(i/100)),{
 									Size  = UDim2.new(0.99000001, 0, 0.5, 0),
 									TextTransparency=0.3
 								}):Play()
 							end
 						end
 					else
+						for i,v:TextButton in ipairs(DownBar:GetChildren()) do
+							if v:isA('TextButton') then
+								v.TextTransparency=.3
+								TweenService:Create(v,TweenInfo.new(0.04),{
+									Size  = UDim2.new(0,0,0,0),
+									TextTransparency=1
+								}):Play()
+							end
+						end
+						
 						TweenService:Create(Icon,TweenInfo.new(0.15),{Rotation=-90}):Play()
 						TweenService:Create(LabelText,TweenInfo.new(0.4),{TextTransparency=0.3}):Play()
 
