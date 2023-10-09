@@ -87,19 +87,19 @@ local function GetImageData(name:string,image:ImageLabel)
 		image.ImageRectOffset = Vector2.new(604,324)
 		image.ImageRectSize = Vector2.new(35,35)
 	end
-	
+
 	if name == "locked" then
 		image.Image = NigImage
 		image.ImageRectOffset = Vector2.new(524, 644)
 		image.ImageRectSize = Vector2.new(35,35)
 	end
-	
+
 	if name == "home" then
 		image.Image = NigImage
 		image.ImageRectOffset = Vector2.new(964, 205)
 		image.ImageRectSize = Vector2.new(35,35)
 	end
-	
+
 	if name == "mouse" then
 		image.Image = "rbxassetid://3515393063"
 	end
@@ -167,7 +167,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 			TextLabel.TextWrapped = true
 			TextLabel.TextXAlignment = Enum.TextXAlignment.Left
 			TextLabel.RichText=true
-			
+
 			headd2text=TextLabel
 		end
 	end)
@@ -650,7 +650,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 
 		scrolling_connect(Right)
 		scrolling_connect(Left)
-		
+
 		local function bedisea()
 			if headd2text then
 				TweenService:Create(headd2text,TweenInfo.new(.1),{
@@ -664,14 +664,14 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 				}):Play()
 			end
 		end
-		
+
 		local function tabcall(val,bas)
 			if val then
 
 				if not Tab.Visible then
 					task.spawn(bedisea)
 					Tab.Position=UDim2.new(0.5,0,0,0)
-					Tab.Size=UDim2.new(0.8, 0, 0, 0)
+					Tab.Size=UDim2.new(0.85, 0, 0, 0)
 				end
 
 				Tab.Visible=true
@@ -1616,7 +1616,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 								}):Play()
 							end
 						end
-						
+
 						TweenService:Create(Icon,TweenInfo.new(0.15),{Rotation=-90}):Play()
 						TweenService:Create(LabelText,TweenInfo.new(0.4),{TextTransparency=0.3}):Play()
 
@@ -1650,7 +1650,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 					Dropdown.TextSize = 14.000
 					Dropdown.TextWrapped = true
 					TweenService:Create(Dropdown,TweenInfo.new(0.1),{TextTransparency=0.3}):Play()
-
+					Dropdown.ZIndex = 999999
 					UIAspectRatioConstraint.Parent = Dropdown
 					UIAspectRatioConstraint.AspectRatio = 4.5
 					UIAspectRatioConstraint.AspectType = Enum.AspectType.ScaleWithParentSize
