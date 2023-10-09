@@ -943,6 +943,15 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 				update_section_size(
 
 				)
+				
+				LabelText:GetPropertyChangedSignal('TextTransparency'):Connect(function()
+					if LabelText.TextTransparency < 0.95 then
+						Label.Visible=true
+					else
+						Label.Visible=false
+					end
+				end)
+				
 				local button_func = {}
 				function button_func:Text(a)
 					LabelText.Text=tostring(a)
@@ -950,9 +959,9 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 				
 				function button_func:Status(val)
 					if val then
-						Label.Visible=true
+						TweenService:Create(LabelText,TweenInfo.new(0.7,Enum.EasingStyle.Quint),{TextTransparency = 0.3}):Play()
 					else
-						Label.Visible=false
+						TweenService:Create(LabelText,TweenInfo.new(0.7,Enum.EasingStyle.Quint),{TextTransparency = 1}):Play()
 					end
 				end
 				
