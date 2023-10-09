@@ -943,28 +943,31 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 				update_section_size(
 
 				)
-				
+
 				LabelText:GetPropertyChangedSignal('TextTransparency'):Connect(function()
-					if LabelText.TextTransparency < 0.95 then
+					if LabelText.TextTransparency <= 0.99 then
 						Label.Visible=true
 					else
 						Label.Visible=false
 					end
 				end)
-				
+
 				local button_func = {}
 				function button_func:Text(a)
 					LabelText.Text=tostring(a)
 				end
-				
+
 				function button_func:Status(val)
 					if val then
+						TweenService:Create(Label,TweenInfo.new(1,Enum.EasingStyle.Quint),{Size = UDim2.new(0.899999976, 0, 0.5, 0)}):Play()
+						TweenService:Create(UIAspectRatioConstraint,TweenInfo.new(.1,Enum.EasingStyle.Quint),{AspectRatio = 6}):Play()
 						TweenService:Create(LabelText,TweenInfo.new(0.7,Enum.EasingStyle.Quint),{TextTransparency = 0.3}):Play()
 					else
-						TweenService:Create(LabelText,TweenInfo.new(0.7,Enum.EasingStyle.Quint),{TextTransparency = 1}):Play()
+						TweenService:Create(Label,TweenInfo.new(.8,Enum.EasingStyle.Quint),{Size = UDim2.new(0,0,0,0)}):Play()
+						TweenService:Create(LabelText,TweenInfo.new(1,Enum.EasingStyle.Quint),{TextTransparency = 1}):Play()
 					end
 				end
-				
+
 				return button_func
 			end
 
@@ -1072,7 +1075,25 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 					toggleval(a,0.1)
 					callback(a)
 				end
+				
+				function button_func:Status(val)
+					if val then
+						local dex = (Default==true and 0) or .3
+						TweenService:Create(Toggle,TweenInfo.new(.5,Enum.EasingStyle.Quint),{Size = UDim2.new(0.899999976, 0, -0.351014495, 0)}):Play()
+						TweenService:Create(LabelText,TweenInfo.new(1,Enum.EasingStyle.Quint),{TextTransparency = dex}):Play()
+						
+						TweenService:Create(Effect,TweenInfo.new(0.4),{BackgroundTransparency=0}):Play()
+						TweenService:Create(Icon,TweenInfo.new(0.4),{BackgroundTransparency=0}):Play()
 
+					else
+						TweenService:Create(Effect,TweenInfo.new(0.4),{BackgroundTransparency=1}):Play()
+						TweenService:Create(Icon,TweenInfo.new(0.4),{BackgroundTransparency=1}):Play()
+
+						TweenService:Create(Toggle,TweenInfo.new(1.5,Enum.EasingStyle.Quint),{Size = UDim2.new(0,0,0,0)}):Play()
+						TweenService:Create(LabelText,TweenInfo.new(1,Enum.EasingStyle.Quint),{TextTransparency = 1}):Play()
+					end
+				end
+				
 				return button_func
 
 			end
