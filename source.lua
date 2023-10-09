@@ -782,9 +782,11 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 
 						for i,v:Frame|TextLabel in ipairs(Section:GetChildren()) do
 							if v:isA('Frame') or v:isA('TextLabel') then
-								pcall(function()
-									a=a+v.AbsoluteSize.Y*1.2
-								end)
+								if v.Visible then
+									pcall(function()
+										a=a+v.AbsoluteSize.Y*1.2
+									end)
+								end
 							end
 						end
 
@@ -795,9 +797,11 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 
 					for i,v:Frame|TextLabel in ipairs(Section:GetChildren()) do
 						if v:isA('Frame') or v:isA('TextLabel') then
-							pcall(function()
-								a=a+v.AbsoluteSize.Y*1.2
-							end)
+							if v.Visible then
+								pcall(function()
+									a=a+v.AbsoluteSize.Y*1.2
+								end)
+							end
 						end
 					end
 
@@ -943,7 +947,15 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 				function button_func:Text(a)
 					LabelText.Text=tostring(a)
 				end
-
+				
+				function button_func:Status(val)
+					if val then
+						Label.Visible=true
+					else
+						Label.Visible=false
+					end
+				end
+				
 				return button_func
 			end
 
