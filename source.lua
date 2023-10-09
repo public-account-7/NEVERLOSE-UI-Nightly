@@ -20,7 +20,7 @@ local function cretate_button(asd)
 	button.TextTransparency=1
 	button.Text=""
 	button.Parent=asd
-	button.ZIndex=9999999
+	button.ZIndex=5000
 	return button
 end
 
@@ -1671,7 +1671,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 					Dropdown.TextSize = 14.000
 					Dropdown.TextWrapped = true
 					TweenService:Create(Dropdown,TweenInfo.new(0.1),{TextTransparency=0.3}):Play()
-					Dropdown.ZIndex = 100000000000000
+					Dropdown.ZIndex = 10000
 					UIAspectRatioConstraint.Parent = Dropdown
 					UIAspectRatioConstraint.AspectRatio = 4.5
 					UIAspectRatioConstraint.AspectType = Enum.AspectType.ScaleWithParentSize
