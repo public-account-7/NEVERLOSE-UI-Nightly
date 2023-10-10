@@ -110,8 +110,58 @@ local function GetImageData(name:string,image:ImageLabel)
 end
 
 local NEVERLOSE = {
-	auto_function = {}
+	auto_function = {},
+	Themes = {
+		BlackgroundColor = Color3.fromRGB(43, 43, 43),
+		BlackColor = Color3.fromRGB(16, 16, 16),
+		HeaderColor = Color3.fromRGB(47, 47, 47),
+		TraceColor = Color3.fromRGB(100, 100, 100),
+		MainColor = Color3.fromRGB(255, 140, 0),
+		MainColorDrop = Color3.fromRGB(65, 54, 31),
+		SectionColor = Color3.fromRGB(26, 26, 26),
+		StrokeColor = Color3.fromRGB(50, 50, 50),
+		ButtonBlackgroundColor = Color3.fromRGB(26, 26, 26)
+	}
 }
+
+function NEVERLOSE:Theme(name)
+	name = tostring(name or "original"):lower()
+	if name == "original" then
+		NEVERLOSE.Themes.BlackgroundColor = Color3.fromRGB(1, 17, 33)
+		NEVERLOSE.Themes.BlackColor = Color3.fromRGB(9, 9, 19)
+		NEVERLOSE.Themes.HeaderColor = Color3.fromRGB(7, 7, 17)
+		NEVERLOSE.Themes.TraceColor = Color3.fromRGB(0, 34, 44)
+		NEVERLOSE.Themes.MainColor = Color3.fromRGB(19, 176, 243)
+		NEVERLOSE.Themes.MainColorDrop = Color3.fromRGB(3, 6, 25)
+		NEVERLOSE.Themes.SectionColor = Color3.fromRGB(0, 17, 35)
+		NEVERLOSE.Themes.StrokeColor = Color3.fromRGB(3, 35, 50)
+		NEVERLOSE.Themes.ButtonBlackgroundColor = Color3.fromRGB(2, 5, 22)
+	end
+	
+	if name == "nightly" then
+		NEVERLOSE.Themes.BlackgroundColor = Color3.fromRGB(43, 43, 43)
+		NEVERLOSE.Themes.BlackColor = Color3.fromRGB(16, 16, 16)
+		NEVERLOSE.Themes.HeaderColor = Color3.fromRGB(47, 47, 47)
+		NEVERLOSE.Themes.TraceColor = Color3.fromRGB(100, 100, 100)
+		NEVERLOSE.Themes.MainColor = Color3.fromRGB(255, 140, 0)
+		NEVERLOSE.Themes.MainColorDrop = Color3.fromRGB(65, 54, 31)
+		NEVERLOSE.Themes.SectionColor = Color3.fromRGB(26, 26, 26)
+		NEVERLOSE.Themes.StrokeColor = Color3.fromRGB(50, 50, 50)
+		NEVERLOSE.Themes.ButtonBlackgroundColor = Color3.fromRGB(26, 26, 26)
+	end
+	
+	if name == "dark" then
+		NEVERLOSE.Themes.BlackgroundColor = Color3.fromRGB(37, 37, 37)
+		NEVERLOSE.Themes.BlackColor = Color3.fromRGB(8, 8, 8)
+		NEVERLOSE.Themes.HeaderColor = Color3.fromRGB(8, 8, 8)
+		NEVERLOSE.Themes.TraceColor = Color3.fromRGB(25, 25, 25)
+		NEVERLOSE.Themes.MainColor = Color3.fromRGB(0, 172, 247)
+		NEVERLOSE.Themes.MainColorDrop = Color3.fromRGB(64, 65, 67)
+		NEVERLOSE.Themes.SectionColor = Color3.fromRGB(13, 13, 13)
+		NEVERLOSE.Themes.StrokeColor = Color3.fromRGB(28, 28, 28)
+		NEVERLOSE.Themes.ButtonBlackgroundColor = Color3.fromRGB(13, 13, 13)
+	end
+end
 
 function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 	local WindowFunctinos={}
@@ -300,7 +350,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 	Frame.Parent = ScreenGui
 	Frame.Active = true
 	Frame.AnchorPoint = Vector2.new(0.5, 0.5)
-	Frame.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
+	Frame.BackgroundColor3 = NEVERLOSE.Themes.BlackgroundColor
 	Frame.BackgroundTransparency = 0.200
 	Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	Frame.BorderSizePixel = 0
@@ -314,7 +364,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 	UICorner.Parent = Frame
 
 	Frame_2.Parent = Frame
-	Frame_2.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
+	Frame_2.BackgroundColor3 = NEVERLOSE.Themes.BlackColor
 	Frame_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	Frame_2.BorderSizePixel = 0
 	Frame_2.Position = UDim2.new(0.223214373, 0, 0, 0)
@@ -325,7 +375,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 	UICorner_2.Parent = Frame_2
 
 	Frame_3.Parent = Frame
-	Frame_3.BackgroundColor3 = Color3.fromRGB(47, 47, 47)
+	Frame_3.BackgroundColor3 = NEVERLOSE.Themes.HeaderColor
 	Frame_3.BackgroundTransparency = 0.900
 	Frame_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	Frame_3.BorderSizePixel = 0
@@ -402,7 +452,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 	outlo.Name = "outlo"
 	outlo.Parent = Frame
 	outlo.AnchorPoint = Vector2.new(1, 0)
-	outlo.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+	outlo.BackgroundColor3 = NEVERLOSE.Themes.TraceColor
 	outlo.BackgroundTransparency = 0.700
 	outlo.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	outlo.BorderSizePixel = 0
@@ -416,7 +466,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 	outlo_2.Name = "outlo"
 	outlo_2.Parent = Frame
 	outlo_2.AnchorPoint = Vector2.new(1, 0.5)
-	outlo_2.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+	outlo_2.BackgroundColor3 = NEVERLOSE.Themes.TraceColor
 	outlo_2.BackgroundTransparency = 0.700
 	outlo_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	outlo_2.BorderSizePixel = 0
@@ -430,7 +480,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 	outlo_3.Name = "outlo"
 	outlo_3.Parent = Frame
 	outlo_3.AnchorPoint = Vector2.new(1, 0)
-	outlo_3.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+	outlo_3.BackgroundColor3 = NEVERLOSE.Themes.TraceColor
 	outlo_3.BackgroundTransparency = 0.700
 	outlo_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	outlo_3.BorderSizePixel = 0
@@ -534,10 +584,16 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 		local Image = Instance.new("ImageLabel")
 		local UICorner_2 = Instance.new("UICorner")
 		local Label = Instance.new("TextLabel")
-
+		
+		local cc = NEVERLOSE.Themes.MainColor
+		
+		if cc == Color3.fromRGB(0, 172, 247) then
+			cc = NEVERLOSE.Themes.BlackgroundColor
+		end
+		
 		TabButton.Name = "TabButton"
 		TabButton.Parent = TabButtons
-		TabButton.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+		TabButton.BackgroundColor3 = cc
 		TabButton.BackgroundTransparency = 1
 		TabButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
 		TabButton.BorderSizePixel = 0
@@ -563,7 +619,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 		Image.SizeConstraint = Enum.SizeConstraint.RelativeYY
 		Image.ZIndex = 5
 
-		Image.ImageColor3 = Color3.fromRGB(255, 140, 0)
+		Image.ImageColor3 = NEVERLOSE.Themes.MainColor
 		Image.ImageRectOffset = Vector2.new(205, 565)
 		Image.ImageRectSize = Vector2.new(35, 35)
 
@@ -718,7 +774,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 			Section.Name = "Section"
 			Section.Parent = (parentname=="left"and Left) or (parentname=="right"and Right) or nil
 
-			Section.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
+			Section.BackgroundColor3 = NEVERLOSE.Themes.SectionColor
 			Section.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			Section.BorderSizePixel = 0
 			Section.Size = UDim2.new(0.970000029, 0, 0, 0)
@@ -727,7 +783,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 			UICorner.CornerRadius = UDim.new(0, 3)
 			UICorner.Parent = Section
 
-			UIStroke.Color = Color3.fromRGB(50, 50, 50)
+			UIStroke.Color = NEVERLOSE.Themes.StrokeColor
 			UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 			UIStroke.Parent = Section
 
@@ -758,7 +814,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 
 			lay.Name = "lay"
 			lay.Parent = Section
-			lay.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+			lay.BackgroundColor3 = NEVERLOSE.Themes.StrokeColor
 			lay.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			lay.BorderSizePixel = 0
 			lay.Size = UDim2.new(0.970000029, 0, 0, 2)
@@ -838,7 +894,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 
 				Button.Name = "Button"
 				Button.Parent = Section
-				Button.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
+				Button.BackgroundColor3 = NEVERLOSE.Themes.ButtonBlackgroundColor
 				Button.BackgroundTransparency = 0.550
 				Button.BorderColor3 = Color3.fromRGB(0, 0, 0)
 				Button.BorderSizePixel = 0
@@ -872,7 +928,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 				LabelText.TextWrapped = true
 
 				UIStroke.Thickness = 0.500
-				UIStroke.Color = Color3.fromRGB(50, 50, 50)
+				UIStroke.Color = NEVERLOSE.Themes.StrokeColor
 				UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 				UIStroke.Parent = Button
 
@@ -1023,7 +1079,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 				Effect.Name = "Effect"
 				Effect.Parent = Toggle
 				Effect.AnchorPoint = Vector2.new(0, 0.5)
-				Effect.BackgroundColor3 = Color3.fromRGB(65, 54, 31)
+				Effect.BackgroundColor3 = NEVERLOSE.Themes.MainColorDrop
 				Effect.BorderColor3 = Color3.fromRGB(0, 0, 0)
 				Effect.BorderSizePixel = 0
 				Effect.Position = UDim2.new(0.800000012, 0, 0.5, 0)
@@ -1036,7 +1092,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 				Icon.Name = "Icon"
 				Icon.Parent = Effect
 				Icon.AnchorPoint = Vector2.new(0.5, 0.5)
-				Icon.BackgroundColor3 = Color3.fromRGB(255, 140, 0)
+				Icon.BackgroundColor3 = NEVERLOSE.Themes.MainColor
 				Icon.BorderColor3 = Color3.fromRGB(0, 0, 0)
 				Icon.BorderSizePixel = 0
 				Icon.Position = UDim2.new(0.75, 0, 0.5, 0)
@@ -1050,7 +1106,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 				local function toggleval(val,timea)
 					if val then
 						TweenService:Create(LabelText,TweenInfo.new(timea),{TextTransparency=0}):Play()
-						TweenService:Create(Icon,TweenInfo.new(timea),{Position=UDim2.new(0.75,0,0.5,0),BackgroundColor3=Color3.fromRGB(255, 140, 0)}):Play();
+						TweenService:Create(Icon,TweenInfo.new(timea),{Position=UDim2.new(0.75,0,0.5,0),BackgroundColor3=NEVERLOSE.Themes.MainColor}):Play();
 					else
 						TweenService:Create(LabelText,TweenInfo.new(timea),{TextTransparency=0.3}):Play()
 						TweenService:Create(Icon,TweenInfo.new(timea),{Position=UDim2.new(0.25,0,0.5,0),BackgroundColor3=Color3.fromRGB(194, 194, 194)}):Play();
@@ -1075,13 +1131,13 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 					toggleval(a,0.1)
 					callback(a)
 				end
-				
+
 				function button_func:Status(val)
 					if val then
 						local dex = (Default==true and 0) or .3
 						TweenService:Create(Toggle,TweenInfo.new(.5,Enum.EasingStyle.Quint),{Size = UDim2.new(0.899999976, 0, -0.351014495, 0)}):Play()
 						TweenService:Create(LabelText,TweenInfo.new(1,Enum.EasingStyle.Quint),{TextTransparency = dex}):Play()
-						
+
 						TweenService:Create(Effect,TweenInfo.new(0.4),{BackgroundTransparency=0}):Play()
 						TweenService:Create(Icon,TweenInfo.new(0.4),{BackgroundTransparency=0}):Play()
 
@@ -1093,7 +1149,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 						TweenService:Create(LabelText,TweenInfo.new(1,Enum.EasingStyle.Quint),{TextTransparency = 1}):Play()
 					end
 				end
-				
+
 				return button_func
 
 			end
@@ -1171,7 +1227,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 				UICorner_2.Parent = BrindText
 
 				UIStroke.Thickness = 0.500
-				UIStroke.Color = Color3.fromRGB(50, 50, 50)
+				UIStroke.Color = NEVERLOSE.Themes.StrokeColor
 				UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 				UIStroke.Parent = BrindText
 
@@ -1311,7 +1367,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 				Box.Name = "Box"
 				Box.Parent = Slider
 				Box.AnchorPoint = Vector2.new(0, 0.5)
-				Box.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
+				Box.BackgroundColor3 = NEVERLOSE.Themes.ButtonBlackgroundColor
 				Box.BackgroundTransparency = 0.100
 				Box.BorderColor3 = Color3.fromRGB(0, 0, 0)
 				Box.BorderSizePixel = 0
@@ -1323,7 +1379,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 				UICorner_2.Parent = Box
 
 				UIStroke.Thickness = 0.500
-				UIStroke.Color = Color3.fromRGB(50, 50, 50)
+				UIStroke.Color = NEVERLOSE.Themes.StrokeColor
 				UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 				UIStroke.Parent = Box
 
@@ -1347,7 +1403,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 				MoveFrame.Name = "MoveFrame"
 				MoveFrame.Parent = Slider
 				MoveFrame.AnchorPoint = Vector2.new(0, 0.5)
-				MoveFrame.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
+				MoveFrame.BackgroundColor3 = NEVERLOSE.Themes.MainColorDrop
 				MoveFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 				MoveFrame.BorderSizePixel = 0
 				MoveFrame.ClipsDescendants = true
@@ -1361,7 +1417,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 				Inline.Name = "Inline"
 				Inline.Parent = MoveFrame
 				Inline.AnchorPoint = Vector2.new(0, 0.5)
-				Inline.BackgroundColor3 = Color3.fromRGB(255, 204, 103)
+				Inline.BackgroundColor3 = NEVERLOSE.Themes.MainColor
 				Inline.BorderColor3 = Color3.fromRGB(0, 0, 0)
 				Inline.BorderSizePixel = 0
 				Inline.Position = UDim2.new(0, 0, 0.5, 0)
@@ -1374,7 +1430,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 				Cir.Name = "Cir"
 				Cir.Parent = Inline
 				Cir.AnchorPoint = Vector2.new(1, 0.5)
-				Cir.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+				Cir.BackgroundColor3 = NEVERLOSE.Themes.MainColor
 				Cir.BorderColor3 = Color3.fromRGB(0, 0, 0)
 				Cir.BorderSizePixel = 0
 				Cir.Position = UDim2.new(1, 0, 0.5, 0)
@@ -1507,7 +1563,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 				TopBar.Parent = Dropdown
 				TopBar.Active = true
 				TopBar.AnchorPoint = Vector2.new(1, 0.5)
-				TopBar.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
+				TopBar.BackgroundColor3 = NEVERLOSE.Themes.ButtonBlackgroundColor
 				TopBar.BackgroundTransparency = 0.500
 				TopBar.BorderColor3 = Color3.fromRGB(0, 0, 0)
 				TopBar.BorderSizePixel = 0
@@ -1519,7 +1575,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 				UICorner_2.Parent = TopBar
 
 				UIStroke.Thickness = 0.500
-				UIStroke.Color = Color3.fromRGB(50, 50, 50)
+				UIStroke.Color = NEVERLOSE.Themes.StrokeColor
 				UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 				UIStroke.Parent = TopBar
 
@@ -1563,7 +1619,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 				DownBar.Parent = Dropdown
 				DownBar.Active = true
 				DownBar.AnchorPoint = Vector2.new(1, 0)
-				DownBar.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
+				DownBar.BackgroundColor3 = NEVERLOSE.Themes.ButtonBlackgroundColor
 				DownBar.BackgroundTransparency = 0.100
 				DownBar.BorderColor3 = Color3.fromRGB(0, 0, 0)
 				DownBar.BorderSizePixel = 0
@@ -1576,7 +1632,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 				UICorner_3.Parent = DownBar
 
 				UIStroke_2.Thickness = 0.500
-				UIStroke_2.Color = Color3.fromRGB(50, 50, 50)
+				UIStroke_2.Color = NEVERLOSE.Themes.StrokeColor
 				UIStroke_2.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 				UIStroke_2.Parent = DownBar
 
@@ -1839,7 +1895,7 @@ function NEVERLOSE:KeySystem(TitleName,LinkKey,callback)
 
 	Frame.Parent = ScreenGui
 	Frame.AnchorPoint = Vector2.new(0.5, 0.5)
-	Frame.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
+	Frame.BackgroundColor3 = NEVERLOSE.Themes.BlackgroundColor
 	Frame.BackgroundTransparency = 0.100
 	Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	Frame.BorderSizePixel = 0
@@ -1849,7 +1905,7 @@ function NEVERLOSE:KeySystem(TitleName,LinkKey,callback)
 	UICorner.Parent = Frame
 
 	Frame_2.Parent = Frame
-	Frame_2.BackgroundColor3 = Color3.fromRGB(16, 16, 16)
+	Frame_2.BackgroundColor3 = NEVERLOSE.Themes.BlackColor
 	Frame_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	Frame_2.BorderSizePixel = 0
 	Frame_2.Position = UDim2.new(-0.00109238492, 0, 0.081521742, 0)
@@ -1881,7 +1937,7 @@ function NEVERLOSE:KeySystem(TitleName,LinkKey,callback)
 	PasteKey.Name = "PasteKey"
 	PasteKey.Parent = Frame
 	PasteKey.AnchorPoint = Vector2.new(0.5, 0)
-	PasteKey.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
+	PasteKey.BackgroundColor3 = NEVERLOSE.Themes.ButtonBlackgroundColor
 	PasteKey.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	PasteKey.BorderSizePixel = 0
 	PasteKey.Position = UDim2.new(0.50000006, 0, 0.373641312, 0)
@@ -1896,7 +1952,7 @@ function NEVERLOSE:KeySystem(TitleName,LinkKey,callback)
 	PasteKey.TextTransparency = 0.390
 	PasteKey.TextWrapped = true
 
-	UIStroke.Color = Color3.fromRGB(50, 50, 50)
+	UIStroke.Color = NEVERLOSE.Themes.StrokeColor
 	UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 	UIStroke.Parent = PasteKey
 
@@ -1905,7 +1961,7 @@ function NEVERLOSE:KeySystem(TitleName,LinkKey,callback)
 
 	CopyKey.Name = "CopyKey"
 	CopyKey.Parent = Frame
-	CopyKey.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
+	CopyKey.BackgroundColor3 = NEVERLOSE.Themes.ButtonBlackgroundColor
 	CopyKey.BackgroundTransparency = 0.200
 	CopyKey.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	CopyKey.BorderSizePixel = 0
@@ -1921,7 +1977,7 @@ function NEVERLOSE:KeySystem(TitleName,LinkKey,callback)
 	CopyKey.TextStrokeTransparency = 0.760
 	CopyKey.TextWrapped = true
 
-	UIStroke_2.Color = Color3.fromRGB(50, 50, 50)
+	UIStroke_2.Color = NEVERLOSE.Themes.StrokeColor
 	UIStroke_2.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 	UIStroke_2.Parent = CopyKey
 
@@ -1930,7 +1986,7 @@ function NEVERLOSE:KeySystem(TitleName,LinkKey,callback)
 
 	Submit.Name = "Submit"
 	Submit.Parent = Frame
-	Submit.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
+	Submit.BackgroundColor3 = NEVERLOSE.Themes.ButtonBlackgroundColor
 	Submit.BackgroundTransparency = 0.200
 	Submit.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	Submit.BorderSizePixel = 0
@@ -1946,7 +2002,7 @@ function NEVERLOSE:KeySystem(TitleName,LinkKey,callback)
 	Submit.TextStrokeTransparency = 0.760
 	Submit.TextWrapped = true
 
-	UIStroke_3.Color = Color3.fromRGB(50, 50, 50)
+	UIStroke_3.Color = NEVERLOSE.Themes.StrokeColor
 	UIStroke_3.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 	UIStroke_3.Parent = Submit
 
