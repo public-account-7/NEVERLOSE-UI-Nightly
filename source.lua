@@ -2120,7 +2120,7 @@ function NEVERLOSE:Notification()
 	MainFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 	MainFrame.BorderSizePixel = 0
 	MainFrame.Position = UDim2.new(0.99000001, 0, 0.99000001, 0)
-	MainFrame.Size = UDim2.new(0.5, 0, 0.100000001, 0)
+	MainFrame.Size = UDim2.new(0.35, 0, 0.100000001, 0)
 
 	UIListLayout.Parent = MainFrame
 	UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
