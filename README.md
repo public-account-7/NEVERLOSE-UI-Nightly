@@ -6,13 +6,16 @@
 
 # Example Code
 ```lua
-local NEVERLOSE = loadstring(game:HttpGet("https://raw.githubusercontent.com/3345-c-a-t-s-u-s/NEVERLOSE-UI-Nightly/main/source.lua"))()
+local NEVERLOSE = require(script.ModuleScript)
 
 -- Change Theme --
-NEVERLOSE:Theme("original") -- [ dark , nightly , original ]
+NEVERLOSE:Theme("dark") -- [ dark , nightly , original ]
 ------------------
 
 local Window = NEVERLOSE:AddWindow("NEVERLOSE","TEXT HERE")
+local Notification = NEVERLOSE:Notification()
+
+Notification.MaxNotifications = 6
 
 Window:AddTabLabel('Home')
 
@@ -23,8 +26,10 @@ local Example = ExampleTab:AddSection('Example',"left")
 
 Example:AddLabel("Label")
 
-Example:AddButton("Button",function()
+Example:AddButton("Test Notification",function()
 	print('button')
+	Notification:Notify("info","Notification","Test Notification")
+	Notification:Notify("warning","Notification","Don't Spam",4)
 end)
 
 Example:AddToggle('Toggle',false,function(val)
