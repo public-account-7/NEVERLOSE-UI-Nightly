@@ -1,63 +1,84 @@
-# NEVERLOSE UI
-## Nightly
-### Example Code
+# NEVERLOSE
+## NEVERLOSE UI Library
+![Screenshot 2023-10-10 103415](https://github.com/3345-c-a-t-s-u-s/NEVERLOSE-UI-Nightly/assets/117000269/1f8be350-58e7-409d-8389-d6b1e7da2afe)
+![Screenshot 2023-10-10 103444](https://github.com/3345-c-a-t-s-u-s/NEVERLOSE-UI-Nightly/assets/117000269/3c358aa1-fed3-48dd-abcb-c01030dd9f41)
+![Screenshot 2023-10-10 103513](https://github.com/3345-c-a-t-s-u-s/NEVERLOSE-UI-Nightly/assets/117000269/8d81318b-7cf8-4ad2-8b1b-5517cfdf94ea)
+
+# Example Code
 ```lua
 local NEVERLOSE = loadstring(game:HttpGet("https://raw.githubusercontent.com/3345-c-a-t-s-u-s/NEVERLOSE-UI-Nightly/main/source.lua"))()
 
-local function start()
-	local Window = NEVERLOSE:AddWindow('NEVERLOSE','CSGO')
+-- Change Theme --
+NEVERLOSE:Theme("original") -- [ dark , nightly , original ]
+------------------
 
-	Window:AddTabLabel('Example')
+local Window = NEVERLOSE:AddWindow("NEVERLOSE","TEXT HERE")
 
-	local TabExample = Window:AddTab("Example Tab","earth") -- [ads,list,folder,earth,locked,home,mouse,user]
-	local Tab = Window:AddTab("Tab","ads") 
+Window:AddTabLabel('Home')
 
-	local section = TabExample:AddSection('Section',"right")
+local ExampleTab = Window:AddTab('Example Tab','earth') -- [ads , list , folder , earth , locked , home , mouse , user]
+local MainTab = Window:AddTab('Test','ads')
 
-	section:AddLabel('Read Me!')
+local Example = ExampleTab:AddSection('Example',"left")
 
+Example:AddLabel("Label")
 
-	section:AddButton('Create Section',function()
-		local as
-		as = TabExample:AddSection('Ticket',"left")
-		as:AddLabel('Text Here')
-		as:AddButton('</> Delete',function()
-			as:Hide()
-		end)
-	end)
-
-	Tab:AddSection('Test','left'):AddToggle("Auto Farm",false,function(val)
-		
-	end)
-
-	section:AddToggle('Toggle',false,function() 
-
-	end)
-
-	section:AddToggle('Toggle',false,function() 
-
-	end)
-
-	section:AddToggle('Toggle',false,function() 
-
-	end)
-
-	section:AddKeybind('Keybind',Enum.KeyCode.F,function()
-
-	end)
-
-	section:AddSlider('Follow Speed',0,10,4,function()
-
-	end)
-
-	section:AddDropdown('Dropdown',{1,2,3},3,function()
-
-	end)
-end
-
-local KeySystem = NEVERLOSE:KeySystem('Key System','https://httpbin.org/get',function()
-	return true
+Example:AddButton("Button",function()
+	print('button')
 end)
 
-KeySystem:Callback(start)
+Example:AddToggle('Toggle',false,function(val)
+	print("Toggle",val)
+end)
+
+Example:AddKeybind('Keybind',Enum.KeyCode.X,function(val)
+	print('keybind',val)
+end)
+
+Example:AddSlider('Slider',1,100,50,function(val)
+	print('slider',val)
+end)
+
+Example:AddDropdown('Dropdown',{1,2,3},2,function(val)
+	print("dropdown",val)
+end)
+
+-- Section Function --
+
+local Test = ExampleTab:AddSection('Test',"right")
+
+Test:AddToggle('Example',true,function(val)
+	if val then
+		Example:Show()
+	else
+		Example:Hide()
+	end
+end)
+
+--------------------
+
+local SectionTest = MainTab:AddSection('Test',"left")
+
+SectionTest:AddButton("Kick",function()
+	--game.Players.LocalPlayer:Kick()
+end)
+```
+
+# Key System
+
+```lua
+local NEVERLOSE = loadstring(game:HttpGet("https://raw.githubusercontent.com/3345-c-a-t-s-u-s/NEVERLOSE-UI-Nightly/main/source.lua"))()
+
+local function Start(Key)
+	local Window = NEVERLOSE:AddWindow("NEVERLOSE","TEXT HERE")
+end
+
+local KeySystem = NEVERLOSE:KeySystem("Key System","https://discord.gg/bedol-hub",function(key)
+	if key=='1234' then
+		return true
+	end
+	return false
+end)
+
+KeySystem:Callback(Start)
 ```
