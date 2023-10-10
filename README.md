@@ -6,7 +6,7 @@
 
 # Example Code
 ```lua
-local NEVERLOSE = require(script.ModuleScript)
+local NEVERLOSE = loadstring(game:HttpGet("https://raw.githubusercontent.com/3345-c-a-t-s-u-s/NEVERLOSE-UI-Nightly/main/source.lua"))()
 
 -- Change Theme --
 NEVERLOSE:Theme("dark") -- [ dark , nightly , original ]
