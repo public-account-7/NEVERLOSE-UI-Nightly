@@ -1,7 +1,11 @@
 --[[	
 
 	|	NEVERLOSE	UI	|
-				
+	Fuck Synapse X
+		THIS UI MAKE BY CAT_SUS		
+		original Neverlose
+		
+		[https://neverlose.cc/] - csgo cheat
 ]]
 
 local LocalPlayer = game:GetService('Players').LocalPlayer;
@@ -121,8 +125,12 @@ local NEVERLOSE = {
 		SectionColor = Color3.fromRGB(26, 26, 26),
 		StrokeColor = Color3.fromRGB(50, 50, 50),
 		ButtonBlackgroundColor = Color3.fromRGB(26, 26, 26)
-	}
+	},
+	_Version="10.C",
+	_Name="NEVERLOSE"
 }
+
+print(NEVERLOSE._Name..":",NEVERLOSE._Version..':',[[https://neverlose.cc/]],": UI BY OWNER BEDOL HUB","__ui")
 
 function NEVERLOSE:Theme(name)
 	name = tostring(name or "original"):lower()
@@ -137,7 +145,7 @@ function NEVERLOSE:Theme(name)
 		NEVERLOSE.Themes.StrokeColor = Color3.fromRGB(3, 35, 50)
 		NEVERLOSE.Themes.ButtonBlackgroundColor = Color3.fromRGB(2, 5, 22)
 	end
-	
+
 	if name == "nightly" then
 		NEVERLOSE.Themes.BlackgroundColor = Color3.fromRGB(43, 43, 43)
 		NEVERLOSE.Themes.BlackColor = Color3.fromRGB(16, 16, 16)
@@ -149,7 +157,7 @@ function NEVERLOSE:Theme(name)
 		NEVERLOSE.Themes.StrokeColor = Color3.fromRGB(50, 50, 50)
 		NEVERLOSE.Themes.ButtonBlackgroundColor = Color3.fromRGB(26, 26, 26)
 	end
-	
+
 	if name == "dark" then
 		NEVERLOSE.Themes.BlackgroundColor = Color3.fromRGB(37, 37, 37)
 		NEVERLOSE.Themes.BlackColor = Color3.fromRGB(8, 8, 8)
@@ -166,7 +174,7 @@ end
 function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 	local WindowFunctinos={}
 	local ToggleUI=false
-	local ooldsize=UICustomSize or UDim2.new(0.200000003, 200, 0.200000003, 175)
+	local ooldsize=UICustomSize or UDim2.new(0.200000003, 210, 0.200000003, 175)
 	local Tabs={}
 
 	local ScreenGui = Instance.new("ScreenGui")
@@ -194,7 +202,14 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 	local UserName = Instance.new("TextLabel")
 	local headd2text
 	local oldPositionClose
-
+	
+	--Anti Spoofer
+	ScreenGui:GetPropertyChangedSignal('Enabled'):Connect(function()
+		if not ScreenGui.Enabled then
+			ScreenGui.Enabled=true
+		end
+	end)
+	
 	task.spawn(function()
 		if Text then
 			local TextLabel = Instance.new("TextLabel")
@@ -584,13 +599,13 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 		local Image = Instance.new("ImageLabel")
 		local UICorner_2 = Instance.new("UICorner")
 		local Label = Instance.new("TextLabel")
-		
+
 		local cc = NEVERLOSE.Themes.MainColor
-		
+
 		if cc == Color3.fromRGB(0, 172, 247) then
 			cc = NEVERLOSE.Themes.BlackgroundColor
 		end
-		
+
 		TabButton.Name = "TabButton"
 		TabButton.Parent = TabButtons
 		TabButton.BackgroundColor3 = cc
@@ -1457,7 +1472,7 @@ function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
 				local function update(Input)
 					local SizeScale = math.clamp((((Input.Position.X) - MoveFrame.AbsolutePosition.X) / MoveFrame.AbsoluteSize.X), 0, 1)
 					local Valuea = math.floor(((Max - Min) * SizeScale) + Min)
-					local Size = UDim2.fromScale(math.clamp(SizeScale+0.12,0,1), 1)
+					local Size = UDim2.fromScale(math.clamp(SizeScale+0.15,0,1), 1)
 					ValueText.Text = tostring(Valuea)
 					TweenService:Create(Inline,TweenInfo.new(0.1),{Size = Size}):Play()
 					callback(Valuea)
@@ -2100,7 +2115,7 @@ function NEVERLOSE:Notification()
 	local Notification_ = {
 		MaxNotifications = 5
 	}
-	
+
 	local Notification = Instance.new("ScreenGui")
 	local MainFrame = Instance.new("Frame")
 	local UIListLayout = Instance.new("UIListLayout")
@@ -2111,7 +2126,7 @@ function NEVERLOSE:Notification()
 	Notification.ZIndexBehavior=Enum.ZIndexBehavior.Global
 	Notification.IgnoreGuiInset=true
 	ProtectGui(Notification)
-	
+
 	MainFrame.Name = "MainFrame"
 	MainFrame.Parent = Notification
 	MainFrame.AnchorPoint = Vector2.new(1, 1)
@@ -2129,9 +2144,9 @@ function NEVERLOSE:Notification()
 	UIListLayout.Padding = UDim.new(0, 4)
 	function Notification_:Notify(Type,Head,Body,countdown)
 		if (#MainFrame:GetChildren()) > Notification_.MaxNotifications then
-			return
+			return false
 		end
-		
+
 		local typeicon = {
 			['error'] = "9072920609",
 			['success'] = "9073052584",
@@ -2180,7 +2195,7 @@ function NEVERLOSE:Notification()
 		IconImage.Image = "rbxassetid://"..tostring(iconId)
 		IconImage.ImageTransparency=1
 		IconImage.ImageColor3=NEVERLOSE.Themes.MainColor
-		
+
 		HeadTitle.Name = "HeadTitle"
 		HeadTitle.Parent = Notify
 		HeadTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -2241,45 +2256,46 @@ function NEVERLOSE:Notification()
 		CloseButton.Image = "rbxassetid://9127564477"
 		CloseButton.ScaleType = Enum.ScaleType.Fit
 		CloseButton.ImageTransparency=1
-
+		
+		local currenttime = 0.3
 		local function start_vu()
-			TweenService:Create(Notify,TweenInfo.new(0.5,Enum.EasingStyle.Quint),{Size=UDim2.new(0.75,0,0.75,0)}):Play()
-			TweenService:Create(UIStroke,TweenInfo.new(1,Enum.EasingStyle.Quint,Enum.EasingDirection.In),{Transparency=0}):Play()
-			TweenService:Create(HeadTitle,TweenInfo.new(1,Enum.EasingStyle.Quint,Enum.EasingDirection.In),{TextTransparency=0}):Play()
-			TweenService:Create(BodyTitle,TweenInfo.new(1,Enum.EasingStyle.Quint,Enum.EasingDirection.In),{TextTransparency=0.3}):Play()
-			TweenService:Create(Countdown,TweenInfo.new(1,Enum.EasingStyle.Quint,Enum.EasingDirection.In),{BackgroundTransparency=0}):Play()
-			TweenService:Create(IconImage,TweenInfo.new(1,Enum.EasingStyle.Quint,Enum.EasingDirection.In),{ImageTransparency=0}):Play()
-			TweenService:Create(CloseButton,TweenInfo.new(1,Enum.EasingStyle.Quint,Enum.EasingDirection.In),{ImageTransparency=0}):Play()
+			TweenService:Create(Notify,TweenInfo.new(currenttime/2,Enum.EasingStyle.Quint),{Size=UDim2.new(0.99,0,0.75,0)}):Play()
+			TweenService:Create(UIStroke,TweenInfo.new(currenttime,Enum.EasingStyle.Quint,Enum.EasingDirection.In),{Transparency=0}):Play()
+			TweenService:Create(HeadTitle,TweenInfo.new(currenttime,Enum.EasingStyle.Quint,Enum.EasingDirection.In),{TextTransparency=0}):Play()
+			TweenService:Create(BodyTitle,TweenInfo.new(currenttime,Enum.EasingStyle.Quint,Enum.EasingDirection.In),{TextTransparency=0.3}):Play()
+			TweenService:Create(Countdown,TweenInfo.new(currenttime,Enum.EasingStyle.Quint,Enum.EasingDirection.In),{BackgroundTransparency=0}):Play()
+			TweenService:Create(IconImage,TweenInfo.new(currenttime,Enum.EasingStyle.Quint,Enum.EasingDirection.In),{ImageTransparency=0}):Play()
+			TweenService:Create(CloseButton,TweenInfo.new(currenttime,Enum.EasingStyle.Quint,Enum.EasingDirection.In),{ImageTransparency=0}):Play()
 		end
 
 
 		local function end_vu()
-			local trantween = TweenService:Create(Notify,TweenInfo.new(1,Enum.EasingStyle.Quint,Enum.EasingDirection.In),{Size=UDim2.new(0.75,0,0,0)})
-			TweenService:Create(UIStroke,TweenInfo.new(0.5,Enum.EasingStyle.Quad),{Transparency=1}):Play()
-			TweenService:Create(HeadTitle,TweenInfo.new(0.5,Enum.EasingStyle.Quad),{TextTransparency=1}):Play()
-			TweenService:Create(BodyTitle,TweenInfo.new(0.5,Enum.EasingStyle.Quad),{TextTransparency=1}):Play()
-			TweenService:Create(Countdown,TweenInfo.new(0.5,Enum.EasingStyle.Quad),{BackgroundTransparency=1}):Play()
-			TweenService:Create(IconImage,TweenInfo.new(0.5,Enum.EasingStyle.Quad),{ImageTransparency=1}):Play()
-			TweenService:Create(CloseButton,TweenInfo.new(0.5,Enum.EasingStyle.Quad),{ImageTransparency=1}):Play()
+			local trantween = TweenService:Create(Notify,TweenInfo.new(currenttime,Enum.EasingStyle.Quint,Enum.EasingDirection.In),{Size=UDim2.new(0.75,0,0,0)})
+			TweenService:Create(UIStroke,TweenInfo.new(currenttime/2,Enum.EasingStyle.Quad),{Transparency=1}):Play()
+			TweenService:Create(HeadTitle,TweenInfo.new(currenttime/2,Enum.EasingStyle.Quad),{TextTransparency=1}):Play()
+			TweenService:Create(BodyTitle,TweenInfo.new(currenttime/2,Enum.EasingStyle.Quad),{TextTransparency=1}):Play()
+			TweenService:Create(Countdown,TweenInfo.new(currenttime/2,Enum.EasingStyle.Quad),{BackgroundTransparency=1}):Play()
+			TweenService:Create(IconImage,TweenInfo.new(currenttime/2,Enum.EasingStyle.Quad),{ImageTransparency=1}):Play()
+			TweenService:Create(CloseButton,TweenInfo.new(currenttime/2,Enum.EasingStyle.Quad),{ImageTransparency=1}):Play()
 			trantween:Play()
-			
+
 			trantween.Completed:Connect(function()
 				Notify:Destroy()
 			end)
 		end
 
 		start_vu()
-		
+
 		task.spawn(function()
 			CloseButton.MouseButton1Click:Connect(end_vu)
-			
+
 			if countdown then
-				
+
 				pcall(function()
 					task.wait(1.3)
 					local tween = TweenService:Create(Countdown,TweenInfo.new(tonumber(countdown) or 3,Enum.EasingStyle.Linear),{Size=UDim2.new(1,0,0.1,0)
 					})
-					
+
 					tween:Play()
 
 					tween.Completed:Wait()
@@ -2289,7 +2305,7 @@ function NEVERLOSE:Notification()
 			end
 		end)
 	end
-	
+
 	return Notification_
 end
 
