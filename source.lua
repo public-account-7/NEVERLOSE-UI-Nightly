@@ -130,8 +130,6 @@ local NEVERLOSE = {
 	_Name="NEVERLOSE"
 }
 
-print(NEVERLOSE._Name..":",NEVERLOSE._Version..':',[[https://neverlose.cc/]],": UI BY OWNER BEDOL HUB","__ui")
-
 function NEVERLOSE:Theme(name)
 	name = tostring(name or "original"):lower()
 	if name == "original" then
