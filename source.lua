@@ -167,6 +167,18 @@ function NEVERLOSE:Theme(name)
 		NEVERLOSE.Themes.StrokeColor = Color3.fromRGB(28, 28, 28)
 		NEVERLOSE.Themes.ButtonBlackgroundColor = Color3.fromRGB(13, 13, 13)
 	end
+
+	if name == "pink" then
+		NEVERLOSE.Themes.BlackgroundColor = Color3.fromRGB(50, 10, 30)
+		NEVERLOSE.Themes.BlackColor = Color3.fromRGB(30, 5, 20)
+		NEVERLOSE.Themes.HeaderColor = Color3.fromRGB(60, 20, 40)
+		NEVERLOSE.Themes.TraceColor = Color3.fromRGB(200, 50, 150)
+		NEVERLOSE.Themes.MainColor = Color3.fromRGB(255, 105, 180)
+		NEVERLOSE.Themes.MainColorDrop = Color3.fromRGB(100, 20, 60)
+		NEVERLOSE.Themes.SectionColor = Color3.fromRGB(80, 10, 50)
+		NEVERLOSE.Themes.StrokeColor = Color3.fromRGB(150, 40, 100)
+		NEVERLOSE.Themes.ButtonBlackgroundColor = Color3.fromRGB(60, 10, 40)
+	end
 end
 
 function NEVERLOSE:AddWindow(NameScriptHub,Text,UICustomSize)
